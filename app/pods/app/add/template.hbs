@@ -1,0 +1,29 @@
+<div class="container-fluid scrollable">
+  {{#link-to 'app.availabilities.new' tagName='div'}}
+  <div class="session-container main-background">
+    <div class="icon-center-container"> <!--to contain icon and label -->
+      <div class="center-text">
+        <img src="Images/Teaching.png">
+      </div>
+      <div>
+        <p class="center-text patient-heading">Teaching Session</p>
+      </div>
+    </div>
+  </div>
+  {{/link-to}}
+
+  {{#link-to 'app.requests.new' tagName='div'}}
+  <div class="session-container main-background">
+    <div class="icon-center-container">
+      <div class="center-text">
+        <img src="Images/Teaching%20Request.png">
+      </div>
+      <div>
+        <p class="center-text patient-heading">Teaching Request</p>
+      </div>
+    </div>
+  </div>
+  {{/link-to}}
+</div>
+
+{{app-footer}}

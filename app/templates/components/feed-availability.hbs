@@ -1,0 +1,33 @@
+{{#link-to "app.availabilities.show" availability tagName="a"}}
+<div class="card card-center border-secondary mb-3" style="max-width: 18rem;">
+    <div class="card-header">
+        <img src="Images/Profile.png">
+        <p class="last-seen">1 day</p>
+        <div class="card-title">
+            <p class="card-heading no-margin">{{availability.user.name}}</p>
+            <p class="blue-subhead">is Available</p>
+        </div>
+    </div>
+    <div class="card-body font-light-grey">
+        <h6 class="font-dark-grey">{{availability.info}}</h6>
+        <img src="Images/Clock.png" class="clock">
+        <p class="session-time">{{formatted-date date=availability.startTime format="HH:mm"}} - {{formatted-date date=availability.endTime format="HH:mm"}} {{formatted-date date=availability.startTime format="D MMM YYYY"}}</p>
+        <img src="Images/rsz_3pin.png" class="pin">
+        <p class="session-location">{{availability.location.name}}</p>
+    </div>
+    <div class="card-footer">
+        <div class="float-left">
+            <p class="no-margin">{{availability.studentCount}} of {{availability.maxStudents}}</p>
+            <p class="font-small">students signed up</p>
+        </div>
+        {{!-- <div class="float-right attend">
+            {{#each (range 0 availability.maxStudents - availability.studentCount) as |number|}}
+                <img src="Images/profileBlueSmall.png">
+            {{/each}}
+            {{#each (range 0 availability.studentCount) as |number|}}
+                <img src="Images/profileWhiteSmall.png">
+            {{/each}}
+        </div> --}}
+    </div>
+</div>
+{{/link-to}}

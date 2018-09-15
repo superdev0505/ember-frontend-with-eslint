@@ -1,0 +1,22 @@
+<form {{action 'authenticate' on='submit' }} id="loginForm">
+  <div class="form-container">
+   {{#if loginError}}
+    <div class="login-err alert alert-error">invalid-credentials</div>
+   {{/if}}
+   <div class="form">
+     <div>
+       <h3 class="signup-title center-text">Login</h3>
+     </div>
+     {{input id='identification' class='input-text' placeholder='Enter Login' type='email' value=identification required='required' focus-out=(action (mut showEmailError) true)}}
+     {{input id='password' class='input-text' placeholder='Enter Password' type='password' value=password pattern='.{8,}' required='required' focus-out=(action (mut showPasswordError) true)}}
+     <div>
+       <button type="submit" class="button btn btn-primary btn-wide btn-blue login-btn">Login</button>
+     </div>
+     <div class="center-text">
+       {{#link-to "auth.register" class="main-text font-small"}}Sign up{{/link-to}}
+       <br/><br/>
+       <a href="#" class="main-text font-small">Forgotten password?</a>
+     </div>
+   </div>
+  </div>
+</form>

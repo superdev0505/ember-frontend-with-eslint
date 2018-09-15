@@ -1,0 +1,83 @@
+{{#if errorMessage}}
+{{errorMessage}}
+{{/if}}
+<form {{action "submit" on="submit"}}>
+<div id="descriptions">
+   <label>
+      Info< /label>
+      {{input id="info" value=availability.info placeholder="enter description"  type="text"}}
+</div>
+<p></p>
+<div id="session">
+<label>Location Info</label>
+{{input id="locateinfo" value=availability.locationInfo placeholder="session name" type="text"}}
+</div>
+<p></p>
+<div id="maxStudent">
+   <label>How Many Students Can You Teach</label>
+   {{input id="maxStudents"   value=availability.maxStudents placeholder="enter student number" type="text"}}
+</div>
+<p></p>
+<div class="form-groups" id='location'>
+   <label> Location </label>
+   {{#power-select
+   options=locations
+   type="select"
+   selected=availability.location
+   onchange=(action (mut availability.location) ) as |loc|}}
+   {{loc.name}}
+   {{/power-select}}
+</div>
+<p></p>
+<div id="thestartDate">
+   <label>
+   StartTime:
+   {{pikaday-input id="startTime"  format="YYYY.MM.DD"  value=availability.startTime
+   onSelection=(action (mut availability.startTime  ))  type="text"}}
+   </label>
+</div>
+{{availability.validations.attrs.startTime.message}}
+<div id="sessionPrivate">
+   <p>
+      Checkbox if session is Private: {{input id="privacy"  type="checkbox"   checked=availability.isPrivate }}
+      {{#if isPrivate}}
+      {{ input value="Private Session"}}
+      {{/if}}
+   </p>
+</div>
+<div id="theFinishDate">
+   <label>
+   EndTime:
+   {{pikaday-input id="endTime"  format="YYYY.MM.DD"   value=availability.endTime placeholder="enter Date" onSelection=(action (mut availability.endTime))  type="text"}}
+   </label>
+</div>
+{{availability.validations.attrs.endTime.message}}
+<p></p>
+<div class="theSpecial">
+   <label> Specialty </label>
+   {{#power-select-multiple
+   multiple=true
+   options=specialties
+   type="select"
+   selected=availability.specialties
+   onchange=(action (mut availability.specialties)) as |spec|}}
+   {{spec.name}}
+   {{/power-select-multiple}}
+</div>
+<p></p>
+<div class="jobTitle">
+   <label> Level Teaching Aimed At </label>
+   {{#power-select-multiple
+   multiple=true
+   options=jobtitles
+   type="select"
+   selected=availability.jobtitles
+   onchange=(action (mut availability.jobtitles)) as |job|}}
+   {{job.name}}
+   {{/power-select-multiple}}
+</div>
+<p></p>
+<div id="submitButton">
+   <button class="create"  type="submit">Send</button>
+</div>
+</form>

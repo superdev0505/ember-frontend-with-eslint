@@ -1,0 +1,12 @@
+<div class="header">
+  <nav class="nav nav-justified">
+    {{#link-to 'app.alerts.activity' class='nav-item nav-link'}}Activity{{/link-to}}
+    {{#link-to 'app.alerts.messages' class='nav-item nav-link'}}Messages{{/link-to}}
+  </nav>
+</div>
+
+<div class="container-fluid scrollable home-page">
+  {{outlet}}
+</div>
+
+{{app-footer}}

@@ -1,0 +1,23 @@
+<div class="teach_session">
+  <span>{{sessions.posted}}</span>
+  <div class="main_content row">
+    <div class="col-sm-3">
+      <img src="{{sessions.image}}">
+    </div>
+    <div class="col-sm-9">
+      <h2>{{sessions.teacher_name}}</h2>
+      <span class="addon">{{sessions.availablity}}</span>
+      <p>
+        <i class="fa fa-clock"></i>
+        {{sessions.duration}}
+      </p>
+      <p>
+        <i class="fa fa-map-marker"></i>
+        <span>{{sessions.location}}</span>
+      </p>
+    </div>
+  </div>
+  <div class="add_one">
+    <span>{{sessions.students}} of {{total_request}} students signed up</span>
+  </div>
+</div>

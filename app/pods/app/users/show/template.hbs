@@ -1,0 +1,22 @@
+<div class="jumbotron">
+  <div class="container">
+    <img src="{{model.avatar_fullpath}}" class="profile-image" alt="profile image">
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-4">
+    <h1 class="name">{{model.name}}</h1>
+    <h3 class="title">{{model.title}}</h3>
+    <h3 class="email">{{model.email}}</h3>
+    <h3 class="jobTitle">{{model.jobTitle.name}}</h3>
+    <p class="bio">{{model.bio}}</p>
+
+    <ul class="locations">
+      {{#each model.location as |location|}}
+        <li>{{location.name}}</li>
+      {{/each}}
+    </ul>
+    {{#link-to 'app.editprofile' class="btn btn-primary btn-xs" id="edit-profile"}}Edit profile{{/link-to}}
+  </div>
+</div>

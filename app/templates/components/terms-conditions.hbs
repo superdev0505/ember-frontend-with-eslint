@@ -1,0 +1,17 @@
+
+<div class="terms">
+  <p>
+    <input type="checkbox" class="agree" id="checkbox" onclick={{action "clickToAgree"}} />
+    Check here to indicate that you have read and agree to the
+    <a href="{{termsLink}}" data-test-link="true" target="_blank">Terms and conditions</a> and our
+    <a href="{{privacyLink}}" data-test-privacy-link="true" target="_blank">Privacy Policy</a>.
+    <br>
+
+    {{#if isDisabled}}
+      <strong><em><span style="font-size:10px;position: absolute;">You must agree to terms before signing up.</span></em></strong>
+    {{/if}}
+  </p>
+
+</div>
+
+<button type="submit" id="registration" data-test-registration-button disabled={{isDisabled}}>Register</button>

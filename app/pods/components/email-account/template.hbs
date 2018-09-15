@@ -1,0 +1,36 @@
+<p class="secondaryEmail" style="margin-bottom:0;">
+  {{#if ea.isPrimary}}
+      {{ea.email}}
+      <button type="button" class="dropdown-button" name="button" {{action 'toggleDropdown' ea}}>
+        {{fa-icon 'caret-down'}}
+      </button>
+  {{/if}}
+</p>
+{{#if ea.unconfirmed}}
+  <div class="small-subtext unconfirmed">
+    <span style="font-size:10px;color:#91A3B0">
+      <em>Unconfirmed email</em>
+    </span>
+  </div>
+{{/if}}
+
+{{#unless isHidden}}
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="input-group input-group-sm">
+        {{input type='text'
+            class='form-control confirm-code-input'
+            value=enteredCode
+            placeholder="Enter confirmation code"}}
+        <span class="input-group-btn">
+          <button type="button" class="btn btn-default submit-code-button" {{action 'submitConfirmationCode'}}>
+            {{fa-icon 'plus'}}
+          </button>
+          <button type="button" class="btn btn-default" {{action 'deleteEmailAccount'}} data-test-delete-emailaccount>
+            {{fa-icon 'ban'}}
+          </button>
+        </span>
+      </div>
+    </div>
+  </div>
+{{/unless}}

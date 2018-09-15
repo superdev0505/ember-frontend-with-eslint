@@ -1,0 +1,23 @@
+
+    <div class="search-container">
+        {{input id='search' class='input-text' placeholder='Search by teachers name, session name or date' type='text' value=searchText key-press="search"}}
+        <img src=Images/SearchSmall.png class="search-icon">
+    </div>
+    {{#scrolling-list model=model}}
+        {{#each model as |availability|}}
+
+            {{feed-availability availability=availability}}
+
+
+        {{else}}
+            <div class="alert alert-default">
+                No sessions matched your search criteria.
+            </div>
+        {{/each}}
+    {{/scrolling-list}}
+    
+    <div class="filterBtn">
+        <img src="Images/filterBlack.png">
+    </div>
+
+{{app-footer}}

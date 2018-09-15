@@ -1,0 +1,27 @@
+<div class="container">
+  {{search-form}}
+</div>
+
+{{loading-spinner}}
+{{#scrolling-list model=model}}
+  {{#each model as |sessions|}}
+
+    {{teach-sessions sessions=sessions}}
+
+
+  {{else}}
+    <div class="alert alert-default">
+      {{#if loadedOnce}}
+        No sessions matched your search criteria.
+      {{/if}}
+    </div>
+  {{/each}}
+
+  {{#if loadedOnce}}
+    <button class="btn btn-default" {{action 'loadMore'}}>
+      Load More
+    </button>
+  {{/if}}
+{{/scrolling-list}}
+
+{{app-footer}}

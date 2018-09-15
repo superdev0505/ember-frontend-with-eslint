@@ -1,0 +1,31 @@
+<div class="container">
+   <div class="session"> Session: <span class="theSession">{{model.locationInfo}}</span></div>
+   <div id="info"> Information: <span class="theinfo">{{model.info}}</span></div>
+   <div id="maxStudents"> Maximum Students: <span class="maxstu">{{model.maxStudents}}</span></div>
+   <div class="location">  location: <span class="selectedlocation">{{model.location.name}}</span></div>
+   <h4 class="startTime">Start Time: <span class="starting">{{moment-format model.startTime "HH:mm DD/MM/YY"}}</span></h4>
+   <h4 class="endTime"> End Time: <span class="endingAt">{{moment-format model.endTime "HH:mm DD/MM/YY"}}</span></h4>
+   <h5 class="private"> Session Private: <span class="makePrivate">{{model.isPrivate}}</span></h5>
+   <label>
+      Specialties:
+      <ul>
+         {{#each model.specialties as |specialty|}}
+         <li class="specialty">{{specialty.name}}</li>
+         {{/each}}
+      </ul>
+   </label>
+   <p></p>
+   <label>
+      JobTitles:
+      <ul>
+         {{#each model.jobtitles as |job-title|}}
+         <p>
+         <li class="jobtitle">{{job-title.name}}</li>
+         </p>
+         {{/each}}
+      </ul>
+   </label>
+
+</div>
+
+<h3>{{#link-to 'app.availabilities.edit'  model.id class="button"}}Edit Session{{/link-to}}</h3>

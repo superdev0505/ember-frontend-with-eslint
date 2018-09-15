@@ -1,0 +1,8 @@
+{{#link-to "app.myoslr"}}Back{{/link-to}}
+
+<ul>
+  <li>{{#link-to "app.editprofile"}}Edit Profile{{/link-to}}</li>
+  <li>{{#link-to "app.editpassword"}}Change Password{{/link-to}}</li>
+</ul>
+
+<button class="submit logoutbutton" type="button" {{action 'invalidateSession'}}>Logout</button>

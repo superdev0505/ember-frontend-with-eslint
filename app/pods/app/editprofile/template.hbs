@@ -1,0 +1,102 @@
+{{#link-to "app.settings" data-test-back-button='true'}}Back{{/link-to}}
+
+{{#if responseMessage}}
+  <div class="alert alert-success" data-dismiss="alert">
+    <p>{{responseMessage}}</p>
+  </div>
+{{/if}}
+<h1>Edit Profile</h1>
+
+{{picture-upload user=model}}
+
+<form {{action 'saveChanges' model on='submit'}} data-test-myoslr-form="true">
+
+
+  <div class="form-group">
+    <label for="firstname">Name</label>
+    {{input type="text" class="form-control"
+            id="updateName"
+            value=model.name
+            placeholder="Update name"}}
+  </div>
+
+  {{#if model.jobTitle.qualified}}
+    <div class="form-group">
+      <label for="gmc">GMC Number</label>
+      {{input type="text" class="form-control"
+              id="updategmcNum"
+              value=model.gmc
+              placeholder="Update GMC number"}}
+    </div>
+  {{/if}}
+
+  <div class="form-group" id="selectLevel">
+    <label for="job-title">Level</label>
+    {{#power-select
+                    selected=model.jobTitle
+                    options=jobTitles
+                    onchange=(action (mut model.jobTitle)) as |jt|}}
+      {{jt.name}}
+    {{/power-select}}
+  </div>
+
+  <div class="form-group">
+    <label for="email">Primary Email</label>
+    <p id="email">{{model.email}}</p>
+  </div>
+
+  <div id="sec-email" class="form-group">
+    <h5>Secondary Email</h5>
+    {{#each savedEmailAccounts as |emailAccount|}}
+      {{email-account ea=emailAccount}}
+    {{/each}}
+  </div>
+
+  {{#if isHidden}}
+    <button type="button" class="add-email-button btn btn-success btn-xs" {{action "toggleAddEmail"}}>
+      Add Email
+    </button>
+  {{else}}
+    <div class="form-group">
+      <div class="input-group input-group-sm">
+        {{input type='email' class="form-control"
+                id="addEmail"
+                value=newEmail
+                placeholder="Enter email here"}}
+        <span class="input-group-btn">
+          <button type="button" class="btn btn-primary add-button" disabled={{isDisabled}} {{action 'addEmail'}}>
+            {{fa-icon 'plus'}}
+          </button>
+          <button type="button" class="btn btn-danger" {{action 'cancel'}}>
+            cancel
+          </button>
+        </span>
+      </div>
+    </div>
+  {{/if}}
+
+  <div class="form-group" id="selectLocation">
+    <label for="hospitals">Where do you work?</label>
+    {{#power-select-multiple
+      options=locations
+      selected=model.location
+      placeholder="Select some hospitals..."
+      onchange=(action (mut model.location))
+    as |location|}}
+      {{location.name}}
+    {{/power-select-multiple}}
+  </div>
+
+  <div class="form-group">
+    <label for="bio">Bio</label>
+    {{textarea type="text" class="form-control"
+            id="updateBio"
+            value=model.bio
+            placeholder="Update bio"}}
+  </div>
+
+  <button type="submit" id="saveChanges" class="btn btn-default" >Save changes</button>
+  {{#link-to 'app.users.show' model.id  class="btn btn-danger" id="cancelSave"}}
+  Cancel
+{{/link-to}}
+</form>

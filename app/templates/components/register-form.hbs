@@ -1,0 +1,65 @@
+<div id contenteditable="true">
+<form {{action "submit" on="submit"}}>
+
+    <label>Name</label>
+    {{input id="name" type="firstname"
+            value=user.firstname
+            placeholder='enter name'
+            data-test-name="true"
+            focus-out=(action (mut showFirstnameError) true)}}
+
+  {{#if showFirstnameError}}
+  <div class="error">
+  {{v-get user 'firstname' 'message'}}
+  </div>
+  {{/if}}
+  <div id="email">
+    <label>Email</label>
+  {{input id="identification" type="identification"
+          data-test-email='true'
+          placeholder='enter email'
+          value=user.email
+          focus-out=(action (mut showEmailError) true)}}
+
+  </div>
+  {{#if showEmailError}}
+  <div class="error">
+  {{v-get user 'email' 'message'}}
+  </div>
+  {{/if}}
+  <div>
+    <label>Password</label>
+    {{input id="password" type="password"
+            value=user.password
+            placeholder='enter password'
+            focus-out=(action (mut showPasswordError) true)}}
+  </div>
+  {{#if showPasswordError}}
+  <div class="error">
+  {{v-get user 'password' 'message'}}
+  </div>
+  {{/if}}
+
+  <div id="confirmation">
+  <label for="passwordConfirmation">Password Confirmation</label>
+    {{input id="passwordConfirmation"
+            type="password"
+            value=user.passwordConfirmation
+            placeholder="enter password again"
+            focus-out=(action (mut showPasswordConfirmationError) true)}}
+  </div>
+  {{#if showPasswordConfirmationError}}
+  <div class="error">
+  {{v-get user 'passwordConfirmation' 'message'}}
+  </div>
+  {{/if}}
+
+  {{terms-conditions}}
+</form>
+
+{{#link-to "auth.login"}}Login{{/link-to}}
+
+</div>
+{{#if errorMessage}}
+  {{errorMessage}}
+{{/if}}

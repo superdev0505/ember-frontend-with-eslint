@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="user-avatar-profile col-xs-12 text-center">
+    <button {{action 'choosePhoto'}} class="img-circle-profile">
+      <img src="{{user.avatar_fullpath}}" height=128 width=128 class="user-avatar-upload-pic" />
+      <!-- <div class="avatar-upload-overlay">
+        <img src="images/upload.png" height=128 width=128 />
+      </div> -->
+    </button>
+    {{#if user.hasAvatar}}
+      <button {{action 'deleteAvatar'}} class="remove-avatar">
+        {{fa-icon "times-circle-o"}}
+      </button>
+    {{/if}}
+  </div>
+
+  <div class="hidden">
+    {{!-- {{file-upload url="/users/upload_avatar" class="file-upload-field"}} --}}
+    <form multipart=true>
+      {{input type='file' value=chosenFile class='file-upload-field'}}
+    </form>
+  </div>
+</div>
